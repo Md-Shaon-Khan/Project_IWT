@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"], input[type="date"], input[type="number"] {
+            padding: 10px;
+            width: 200px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+        .percentage {
+            font-weight: bold;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Student Attendance System</h1>
+
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" id="searchStudentId" placeholder="Search by Student ID">
+            <button onclick="searchStudent()">Search</button>
+        </div>
+
+        <label for="datePicker">Select Date:</label>
+        <input type="date" id="datePicker">
+        <button onclick="addAttendanceColumn()">Add Attendance</button>
+        
+        <label for="studentId">Student ID:</label>
+        <input type="number" id="studentId" placeholder="Enter Student ID">
+        <label for="studentName">Student Name:</label>
+        <input type="text" id="studentName" placeholder="Enter Student Name">
+        <button onclick="addStudent()">Add Student</button>
+
+        <button onclick="clearAllData()">Clear All Data</button>
+        <button onclick="exportCSV()">Export to CSV</button>
+        <button onclick="showAttendanceSummary()">Show Attendance Summary</button>
+
+        <table id="attendanceTable">
+            <thead>
+                <tr>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Attendance Percentage</th>
+                    <th>Above 75%?</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="attendanceBody">
+                <!-- Dynamic Rows Will Be Added Here -->
+            </tbody>
+        </table>
+
+        <div id="attendanceSummary" style="margin-top: 20px; display: none;">
+            <h3>Attendance Summary</h3>
+            <p>Total Students: <span id="totalStudents"></span></p>
+            <p>Students with Attendance Above 75%: <span id="above75Count"></span></p>
+            <p>Students with Attendance Below 75%: <span id="below75Count"></span></p>
+        </div>
+    </div>
+
+    <script>
+        let students = JSON.parse(localStorage.getItem('students')) || [];
+        let attendance = JSON.parse(localStorage.getItem('attendance')) || {};
+
+        // Save attendance data to LocalStorage
+        function saveData() {
+            localStorage.setItem('students', JSON.stringify(students));
+            localStorage.setItem('attendance', JSON.stringify(attendance));
+        }
+
+        // Load data from LocalStorage
+        function loadData() {
+            students = JSON.parse(localStorage.getItem('students')) || [];
+            attendance = JSON.parse(localStorage.getItem('attendance')) || {};
+            loadTable();
+        }
+
+        // Call loadData when the page loads
+        window.onload = function() {
+            loadData();  // This will load the data when the page is opened
+        };
+
+        // Add Attendance Column for a Selected Date
+        function addAttendanceColumn() {
+            const date = document.getElementById("datePicker").value;
+            if (!date) {
+                alert("Please select a date");
+                return;
+            }
+
+            attendance[date] = attendance[date] || {};
+            saveData();  // Save data after adding a column
+            loadTable();
+        }
+
+        // Add New Student
+        function addStudent() {
+            const studentId = document.getElementById("studentId").value;
+            const studentName = document.getElementById("studentName").value;
+
+            if (!studentId || !studentName) {
+                alert("Please enter student details");
+                return;
+            }
+
+            students.push({ id: studentId, name: studentName });
+            saveData();  // Save data after adding a student
+            loadTable();
+        }
+
+        // Update Attendance for a Specific Date and Student
+        function updateAttendance(date, studentId, isChecked) {
+            if (!attendance[date]) {
+                attendance[date] = {};
+            }
+            attendance[date][studentId] = isChecked;
+            saveData();  // Save data after updating attendance
+            loadTable();
+        }
+
+        // Remove Student from the List
+        function removeStudent(studentId) {
+            students = students.filter(student => student.id !== studentId);
+            saveData();  // Save data after removing a student
+            loadTable();
+        }
+
+        // Clear All Attendance Data
+        function clearAllData() {
+            if (confirm("Are you sure you want to clear all data?")) {
+                students = [];
+                attendance = {};
+                saveData();  // Save data after clearing
+                loadTable();
+            }
+        }
+
+        // Load the Attendance Table with Current Data
+        function loadTable() {
+            const tbody = document.getElementById("attendanceBody");
+            tbody.innerHTML = "";
+
+            students.forEach(student => {
+                let row = document.createElement("tr");
+                let attendanceColumns = '';
+
+                for (let date in attendance) {
+                    attendanceColumns += `
+                        <td>
+                            <input type="checkbox" onchange="updateAttendance('${date}', '${student.id}', this.checked)" 
+                            ${attendance[date][student.id] ? 'checked' : ''}>
+                        </td>
+                    `;
+                }
+
+                // Calculate Attendance Percentage
+                let attendedClasses = 0;
+                let totalClasses = Object.keys(attendance).length;
+                for (let date in attendance) {
+                    if (attendance[date][student.id]) {
+                        attendedClasses++;
+                    }
+                }
+                let percentage = totalClasses > 0 ? (attendedClasses / totalClasses) * 100 : 0;
+
+                // Check if percentage is above 75%
+                let above75 = percentage >= 75 ? "Yes" : "No";
+
+                row.innerHTML = `
+                    <td>${student.id}</td>
+                    <td>${student.name}</td>
+                    <td class="percentage">${percentage.toFixed(2)}%</td>
+                    <td>${above75}</td>
+                    <td><button onclick="removeStudent('${student.id}')">Remove</button></td>
+                    ${attendanceColumns}
+                `;
+
+                tbody.appendChild(row);
+            });
+        }
+
+        // Search for a Student by ID
+        function searchStudent() {
+            const searchId = document.getElementById("searchStudentId").value;
+            if (!searchId) return loadTable();
+
+            const filteredStudents = students.filter(student => student.id.includes(searchId));
+            students = filteredStudents;
+            loadTable();
+        }
+
+        // Export Data to CSV
+        function exportCSV() {
+            let csvContent = "Student ID,Student Name,Attendance Percentage,Above 75%\n";
+            
+            students.forEach(student => {
+                let totalClasses = Object.keys(attendance).length;
+                let attendedClasses = 0;
+
+                for (let date in attendance) {
+                    if (attendance[date][student.id]) {
+                        attendedClasses++;
+                    }
+                }
+                let percentage = totalClasses > 0 ? (attendedClasses / totalClasses) * 100 : 0;
+                let above75 = percentage >= 75 ? "Yes" : "No";
+                csvContent += `${student.id},${student.name},${percentage.toFixed(2)}%,${above75}\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'attendance_data.csv';
+            link.click();
+        }
+
+        // Show Attendance Summary
+        function showAttendanceSummary() {
+            const totalStudents = students.length;
+            let above75Count = 0;
+            let below75Count = 0;
+
+            students.forEach(student => {
+                let attendedClasses = 0;
+                let totalClasses = Object.keys(attendance).length;
+                for (let date in attendance) {
+                    if (attendance[date][student.id]) {
+                        attendedClasses++;
+                    }
+                }
+                let percentage = totalClasses > 0 ? (attendedClasses / totalClasses) * 100 : 0;
+                if (percentage >= 75) {
+                    above75Count++;
+                } else {
+                    below75Count++;
+                }
+            });
+
+            document.getElementById("totalStudents").innerText = totalStudents;
+            document.getElementById("above75Count").innerText = above75Count;
+            document.getElementById("below75Count").innerText = below75Count;
+
+            document.getElementById("attendanceSummary").style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

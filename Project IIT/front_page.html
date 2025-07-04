@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Institute of Information Technology - Jahangirnagar University</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    body {
+      background: #f8f9fa; /* light gray background */
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      padding: 30px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgb(0 0 0 / 0.1);
+    }
+    img.logo {
+      width: 130px;
+      margin-bottom: 20px;
+    }
+    .btn-start {
+      background-color: #0d6efd; /* Bootstrap primary blue */
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      transition: background-color 0.3s ease;
+    }
+    .btn-start:hover {
+      background-color: #084cd3;
+    }
+    h1 {
+      font-size: 2rem;  /* smaller than before */
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 1.25rem; /* smaller than before */
+      margin-bottom: 10px;
+      color: #6c757d; /* Bootstrap's text-secondary color */
+    }
+
+    p.welcome-msg {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+      <img src="https://pmit.iitju.edu.bd/frontend/assets/images/logo-dark.png" alt="IIT Logo" class="logo"/>
+      <h1 class="text-primary fw-bold">Institute of Information Technology</h1>
+      <h3 class="text-secondary mb-4">Jahangirnagar University</h3>
+      <p class="welcome-msg">
+         Welcome to our website! Explore our programs, faculty, and research.
+      </p>
+      <button class="btn btn-start text-white" onclick="location.href='fourYearBatchFront.html'">Let's Start</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

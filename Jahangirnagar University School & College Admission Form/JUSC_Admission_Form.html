@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JU School & College Admission Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
+    <!-- SheetJS for Excel export -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+
+    <style>
+        body{
+            background: linear-gradient(135deg, #FFF1D5 0%, #9EC6F3 100%);
+            font-family: 'segoe UI','Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 30px 0;
+        }
+        .form-step{
+            display: none;
+            padding-bottom: 20px;
+        }
+        .form-step.active{
+            display: block;
+        }
+        .form-container{
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 60px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+        .logo{
+            width:100px;
+            margin-bottom: 15px;
+        }
+        .progressbar{
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+            counter-reset: step;
+        }
+        .progressbar li{
+            list-style: none;
+            position: relative;
+            text-align: center;
+            flex: 1;
+            color: #97866A;
+        }
+
+        .progressbar li:before{
+            counter-increment: step;
+            content: counter(step);
+            width:28px;
+            height: 28px;
+            border: 2px solid #97866A;
+            display: block;
+            text-align: center;
+            margin:0 auto 8px;
+            line-height: 24px;
+            border-radius: 50%;
+            background:  #FFF1D5;
+            color: #735557;
+        }
+
+        .progressbar li.active{
+            color: #9EC6F3;
+        }
+        
+        .progressbar li.active:before{
+            border-color: #9EC6F3;
+            background: #BDDDE4;
+            color: #604652;
+        }
+        .btn-primary{
+            background: #9FB3DF;
+            border-color: #9FB3DF;
+        }
+        .btn-primary:hover{
+            background: #BDDDE4;
+            border-color: #BDDDE4;
+        }
+        .btn-secondary {
+            background: #D29F80;
+            border-color: #D29F80;
+        }
+        .btn-secondary:hover {
+            background: #97866A;
+            border-color: #97866A;
+        }
+        .btn-success:hover {
+            background: #604652;
+            border-color: #604652;
+        }
+        .form-control, .form-select {
+            border-radius: 5px;
+            border: 1px solid #9FB3DF;
+        }
+        h5 { 
+        color: #604652; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-center text-dark mb-3">
+            <img src="ju1.png" class="logo" alt="Ju Logo">
+            <h2>Jahangirnagar University School & College</h2>
+            <h4>Admission Form</h4>
+        </div>
+
+        <div class="form-container container-sm">
+            <ul class="progressbar" id="progressbar">
+                <li class="active">Student Info</li>
+                <li>Parent Info</li>
+                <li>Education Info</li>
+                <li>Payment</li>
+            </ul>
+
+            <form id="admissionForm">
+                <div class="form-step active">
+                    <h5 class="mb-3">Student Personal Information</h5>
+                    <div class="row mb-3">
+                        <div class="col">
+                            <input name="firstName" type="text" class="form-control" placeholder="First Name" required>
+                        </div>
+                        <div class="col">
+                            <input name="middleName" type="text" class="form-control" placeholder="Middle Name">
+                        </div>
+                        <div class="col">
+                            <input name="lastName" type="text" class="form-control" placeholder="Last Name" required>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <select name="birthMonth" class="form-select form-control" required>
+                                <option selected disabled>Month</option>
+                                <option>January</option>
+                                <option>February</option>
+                                <option>March</option>
+                                <option>April</option>
+                                <option>May</option>
+                                <option>June</option>
+                                <option>July</option>
+                                <option>August</option>
+                                <option>September</option>
+                                <option>October</option>
+                                <option>November</option>
+                                <option>December</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <input name="birthDay" type="number" class="form-control" placeholder="Day(1-31)" min="1" max="31" required>
+                        </div>
+                        <div class="col-md-4">
+                            <input name="birthYear" type="number" class="form-control" placeholder="Year (e.g. 2005)" min="1980" max="2025" required>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <select name="gender" class="form-select form-control" required>
+                             <option selected disabled>Gender</option>
+                             <option>Male</option>
+                             <option>Female</option>
+                             <option>Others</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <input name="phone" type="tel" class="form-control" placeholder="Phone(+880) 000-0000-000" required>
+                    </div>
+                    <div class="mb-3">
+                        <input name="email" type="email" class="form-control" placeholder="Email Address" required>
+                    </div>
+                    <div class="d-flex justify-content-end">
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step">
+                    <h5 class="mb-3">Parent Information</h5>
+                    <div class="mb-3">
+                        <input name="fatherName" type="text" class="form-control" placeholder="Father's Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input name="motherName" type="text" class="form-control" placeholder="Mother's Name" required>
+                    </div>
+                    <div class="mb-3">
+                        <input name="guardianPhone" type="tel" class="form-control" placeholder="Guardian's Phone (+880) 000-0000-000">
+                    </div>
+                    <div class="mb-3">
+                        <input name="guardianEmail" type="email" class="form-control" placeholder="Guardian's Email">
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step">
+                    <h5 class="mb-3">Education & Admission Details</h5>
+                    <div class="mb-4">
+                        <select name="classAdmission" id="classSelect" class="form-select form-control" required>
+                            <option selected disabled>Select Class for Admission</option>
+                            <option>Class 6</option>
+                            <option>Class 7</option>
+                            <option>Class 8</option>
+                            <option>Class 9</option>
+                            <option>Class 10</option>
+                            <option>Class 11</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <select name="sector" id="sectorSelect" class="form-select form-control" onchange="updateOptionalSubjects()" required>
+                            <option selected disabled>Select Sector</option>
+                            <option value="Science">Science</option>
+                            <option value="Commerce">Commerce</option>
+                            <option value="Arts">Arts</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <select name="optionalSubject" id="optionalSubjectSelect" class="form-select form-control">
+                            <option selected disabled>Optional Subject(only for Class 9-11)</option>
+                        </select>
+                    </div>
+                    <hr style="border-top:2px solid #9FB3DF; margin-bottom:20px;">
+                    <div class="mb-3">
+                        <input name="prevSchoolName" type="text" class="form-control" placeholder="Previous School Name" required> 
+                    </div>
+                    <div class="mb-3">
+                        <input name="prevSchoolAddress" type="text" class="form-control" placeholder="Previous School Address" required> 
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col">
+                          <input name="city" type="text" class="form-control" placeholder="Current City" required>
+                        </div>
+                        <div class="col">
+                          <input name="state" type="text" class="form-control" placeholder="Current State" required>
+                        </div>
+                        <div class="col">
+                          <input name="country" type="text" class="form-control" placeholder="Nationality" required>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="nextStep()">Next</button>
+                    </div>
+                </div>
+
+                <div class="form-step">
+                    <h5 class="mb-3">Application Fee</h5>
+                    <p>Payment is due 3 days prior to the start of the class</p>
+                    <div class="mb-3">
+                        <select name="paymentAmount" class="form-select form-control" required>
+                            <option selected disabled>Select Payment Amount</option>
+                            <option>Class 6  - 120000 BDT</option>
+                            <option>Class 7  - 125000 BDT</option>
+                            <option>Class 8  - 135000 BDT</option>
+                            <option>Class 9  - 150000 BDT</option>
+                            <option>Class 10 - 140000 BDT</option>
+                            <option>Class 11 - 150000 BDT</option>
+                        </select>
+                        </div>
+                        <div class="mb-3">
+                            <select name="paymentMethod" class="form-select form-control" required>
+                                <option selected disabled>Payment Method</option>
+                                <option>Bkash</option>
+                                <option>Nagad</option>
+                                <option>Rocket</option>
+                                <option>Bank Transfer</option>
+                            </select>       
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <button type="button" class="btn btn-secondary" onclick="prevStep()">Back</button>
+                        <button type="submit" class="btn btn-success">Submit</button>                    
+                    </div>
+                </div>
+            </form>
+
+            <!-- Download button, appears after submission -->
+            <div class="text-center mt-3">
+                <button id="downloadBtn" class="btn btn-info d-none">Download All Submissions</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        const steps = document.querySelectorAll('.form-step');
+        const progressbar = document.querySelectorAll('#progressbar li');
+    
+        function showStep(index) {
+          steps.forEach((step, i) => step.classList.toggle('active', i === index));
+          progressbar.forEach((item, i) => item.classList.toggle('active', i <= index));
+          currentStep = index;
+        }
+    
+        function nextStep() {
+          if (currentStep < steps.length - 1) showStep(currentStep + 1);
+        }
+    
+        function prevStep() {
+          if (currentStep > 0) showStep(currentStep - 1);
+        }
+    
+        function updateOptionalSubjects() {
+          const sector = document.getElementById('sectorSelect').value;
+          const optionalSelect = document.getElementById('optionalSubjectSelect');
+          optionalSelect.innerHTML = '<option selected disabled>Optional Subject(only for Class 9-11)</option>';
+          let options = [];
+          if (sector === 'Science') options = ['Higher Math','Biology','Computer Studies','Agriculture'];
+          if (sector === 'Arts') options = ['Economics','Civics','Logic','Geography'];
+          if (sector === 'Commerce') options = ['Accounting','Business Studies','Economics'];
+          options.forEach(sub => {
+            const opt = document.createElement('option'); opt.value = sub; opt.innerText = sub;
+            optionalSelect.appendChild(opt);
+          });
+        }
+    
+        document.addEventListener('DOMContentLoaded', () => showStep(0));
+    
+        // Data storage & Excel export
+        const records = [];
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const fd = new FormData(this);
+            const rec = { Serial: records.length + 1 };
+            fd.forEach((val, key) => rec[key] = val);
+            records.push(rec);
+            document.getElementById('downloadBtn').classList.remove('d-none');
+            alert('Submission recorded.');
+            this.reset();
+            showStep(0);
+        });
+    
+        document.getElementById('downloadBtn').addEventListener('click', () => {
+            const ws = XLSX.utils.json_to_sheet(records);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Applications');
+            XLSX.writeFile(wb, 'JU_Applications.xlsx');
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

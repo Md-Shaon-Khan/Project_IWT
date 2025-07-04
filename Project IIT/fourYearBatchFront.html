@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .navbar-custom {
+        background: linear-gradient(to right, #e0f7fa, #a5d6a7);
+      }
+
+      .navbar-brand {
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-brand img {
+        height: 60px;
+        margin-right: 15px;
+      }
+
+      .institutes-names h1 {
+        margin: 0;
+        font-weight: bold;
+        line-height: 1.2;
+        font-size: 2rem;
+        color: rgb(54, 147, 210);
+      }
+
+      .nav-link {
+        color: #003c3c !important;
+        font-weight: 500;
+      }
+
+      .nav-link:hover {
+        color: #00796b !important;
+      }
+
+      .navbar-toggler {
+        border: none;
+      }
+      .clickable-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        cursor: pointer;
+      }
+
+      .clickable-card:hover {
+        transform: scale(1.05);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+      }
+    </style>
+    <title>FourYearBatchFront</title>
+  </head>
+  <body>
+    <!-- Middle Section: Logo + University Name -->
+    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
+      <div class="container-fluid">
+        <!-- Brand Area: Logo + Text -->
+        <a class="navbar-brand" href="#">
+          <img
+            src="https://ju-admission.org/_nuxt/ju.j9duiDyT.png"
+            alt="JU Logo"
+            style="height: 70px; width: 60px"
+          />
+          <div class="institutes-names">
+            <h1>IIT</h1>
+          </div>
+        </a>
+
+        <!-- Toggler for mobile -->
+        <button
+          class="navbar-toggler bg-light"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarContent"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Nav Links -->
+        <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Administration</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Faculties</a></li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Institutes</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Admission</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Library</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO / BANNER SECTION -->
+    <section
+      style="
+        background-image: url('https://iitju.edu.bd/_next/image?url=https%3A%2F%2Fwebbackend.iitju.edu.bd%2Fuploads%2Fiit_building_fefe01054b.jpg&w=1920&q=75');
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+      "
+    ></section>
+
+    <!-- BATCH INFORMATION GRID -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-3 col-sm-6">
+            <a href="50batch.html" class="text-decoration-none">
+              <div
+                class="card h-100 text-center shadow border-0 clickable-card"
+                style="background-color: #e0f7fa"
+              >
+                <div
+                  class="card-body d-flex align-items-center justify-content-center"
+                >
+                  <h3 class="display-4 fw-bold text-primary m-0">Batch 50</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <a href="51batch.html" class="text-decoration-none">
+              <div
+                class="card h-100 text-center shadow border-0 clickable-card"
+                style="background-color: #e0f7fa"
+              >
+                <div
+                  class="card-body d-flex align-items-center justify-content-center"
+                >
+                  <h3 class="display-4 fw-bold text-primary m-0">Batch 51</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <a href="52batch.html" class="text-decoration-none">
+              <div
+                class="card h-100 text-center shadow border-0 clickable-card"
+                style="background-color: #e0f7fa"
+              >
+                <div
+                  class="card-body d-flex align-items-center justify-content-center"
+                >
+                  <h3 class="display-4 fw-bold text-primary m-0">Batch 52</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-md-3 col-sm-6">
+            <a href="53batch.html" class="text-decoration-none">
+              <div
+                class="card h-100 text-center shadow border-0 clickable-card"
+                style="background-color: #e0f7fa"
+              >
+                <div
+                  class="card-body d-flex align-items-center justify-content-center"
+                >
+                  <h3 class="display-4 fw-bold text-primary m-0">Batch 53</h3>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

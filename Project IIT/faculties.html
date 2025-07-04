@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Faculty Members - IIT, JU</title>
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+  <style>
+    /* Header */
+h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #003366;
+  font-weight: 700;
+  font-size: 2rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #0056b3;
+  padding-bottom: 10px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Director's Message Container */
+.director-message {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border-radius: 12px;
+  max-width: 900px;
+  margin: 0 auto 50px;
+  padding: 30px 40px;
+  box-shadow: 0 4px 14px rgba(0, 86, 179, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Director's Image */
+.director-message img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 3px solid #0056b3;
+  box-shadow: 0 2px 8px rgba(0, 86, 179, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.director-message img:hover {
+  transform: scale(1.05);
+}
+
+/* Message Text */
+.director-message div {
+  flex: 1;
+  color: #00264d;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Director's Name */
+.director-message .director-name {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #003366;
+  text-align: right;
+  margin-top: 20px;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+   .container .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.faculty-card {
+  flex: 1 1 calc(25% - 30px);
+  max-width: calc(25% - 30px);
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.faculty-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.25);
+}
+
+.faculty-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  transition: transform 0.3s ease;
+  pointer-events: none; /* disables zoom on hover */
+}
+
+.faculty-card:hover img {
+  transform: scale(1); /* no zoom on hover */
+}
+
+.faculty-card-body {
+  padding: 15px 20px 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.faculty-card-body h5 {
+  color: #1a1a1a;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+}
+
+.faculty-card-body p {
+  color: #555;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.contact-info a {
+  color: #0056b3;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .faculty-card {
+    flex: 1 1 calc(50% - 30px);
+    max-width: calc(50% - 30px);
+  }
+}
+
+@media (max-width: 576px) {
+  .faculty-card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+
+    
+
+  <h2>Faculty Members <br>Institute of Information Technology</h2>
+
+  <div class="director-message d-flex align-items-center flex-wrap" style="max-width: 900px; margin: 0 auto 40px;">
+  <img
+    src="https://www.juniv.edu/storage/image/teacher/wWqy6rQyq8NC7t1RyyjwDNLtD7I6OCsqRf4nEQBw.jpg"
+    alt="Dr. Risala Tasin Khan"
+    style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-right: 20px; flex-shrink: 0;"
+  />
+  <div style="flex: 1; min-width: 250px;">
+    <p style="font-size: 1.1rem; color: #333; line-height: 1.6; margin-bottom: 12px;">
+      Welcome to the Institute of Information Technology at Jagannath University. 
+      Our mission is to foster innovation, research excellence, and a collaborative 
+      learning environment to prepare our students for the challenges of the future. 
+      We are committed to advancing knowledge through cutting-edge research and 
+      nurturing the next generation of technology leaders.
+    </p>
+    <p style="font-weight: bold; font-size: 1.15rem; color: #0056b3; text-align: right; margin-top: 15px;">
+      — Dr. Risala Tasin Khan, Director, IIT, JU
+    </p>
+  </div>
+</div>
+
+
+  <div class="container">
+    <div class="row">
+
+      <!-- Md. Fazlul Karim Patwary -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://juniv.edu/storage/image/teacher/5SJ9OZZNxHAZiwYeyx5kRVjL2I0F2NoWCBVSx1wp.jpeg" alt="Md. Fazlul Karim Patwary" />
+          <h5>Md. Fazlul Karim Patwary</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> Big Data, Data Science, Machine Learning, Statistical Modelling</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:patwary@juniv.edu">patwary@juniv.edu</a></p>
+            <p><strong>Phone:</strong> +8801922999217</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- M. Mesbahuddin Sarker -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://juniv.edu/storage/image/teacher/F4GfhdR8lXMsDxR3PYLjT1sRoyLa1ClDvMuNSBD3.png" alt="M. Mesbahuddin Sarker" />
+          <h5>M. Mesbahuddin Sarker, PhD</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> Databases, AI, IoT, Media & Communication, Digitization</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:sarker@juniv.edu">sarker@juniv.edu</a></p>
+            <p><strong>Phone:</strong> +8801716091920</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- M. Shamim Kaiser -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://www.juniv.edu/storage/image/teacher/PuMn4Jt3Bh8JAiVGxZUqGegYxoXrPWYbprsi5cQV.jpg" alt="M. Shamim Kaiser" />
+          <h5>M. Shamim Kaiser, PhD</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> Data Analytics, Machine Learning, Wireless Networks, Cognitive Radio, Big IoT Data, Healthcare, Neuroinformatics, Cyber Security</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:mskaiser@juniv.edu">mskaiser@juniv.edu</a></p>
+            <p><strong>Phone:</strong> +8801511000555</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mohammad Abu Yousuf -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://www.juniv.edu/storage/image/teacher/1MELUtuGQKLg8PkjMnn2B7cgx4NaI5MpaiHiXaPZ.jpg" alt="Mohammad Abu Yousuf" />
+          <h5>Mohammad Abu Yousuf, PhD</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> Computer Vision, Human-Robot Interaction, Medical Image Processing, Natural Language Processing</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:yousuf@juniv.edu">yousuf@juniv.edu</a></p>
+            <p><strong>Phone:</strong> +8801711469636</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Risala Tasin Khan -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://www.juniv.edu/storage/image/teacher/wWqy6rQyq8NC7t1RyyjwDNLtD7I6OCsqRf4nEQBw.jpg" alt="Risala Tasin Khan" />
+          <h5>Risala Tasin Khan, PhD</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> Cognitive Radio Networks, Resource Allocation using Machine Learning, IoT Security</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:risala@juniv.edu">risala@juniv.edu</a></p>
+            <p><strong>Phone:</strong> +8801715108479</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Jesmin Akhter -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://www.juniv.edu/storage/image/teacher/h1jm38CxmmsVj7k8CwCkckbuDghw7osHzKulnrNI.jpeg" alt="Jesmin Akhter" />
+          <h5>Jesmin Akhter, PhD</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> IoT, Network Traffic, Complexity and Algorithms, Software Engineering</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:jesmin@juniv.edu">jesmin@juniv.edu</a></p>
+            <p><strong>Phone:</strong> +8801940181243</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- K M Akkas Ali -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://www.juniv.edu/storage/image/teacher/qpkbrWoJxyxsoUGCwe883r1CENjac2bcqGdTOZ8H.jpg" alt="K M Akkas Ali" />
+          <h5>K M Akkas Ali</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> Blockchain Technology, Cryptography, Network Security, Cyber Law</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> <a href="mailto:akkas@juniv.edu">akkas@juniv.edu</a></p>
+            <p><strong>Phone:</strong> +8801712505324</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fahima Tabassum -->
+      <div class="col-md-4 faculty-card">
+        <div class="faculty-card-body">
+          <img src="https://www.juniv.edu/storage/image/teacher/E1DIbRpt7hQHDqUTI5EwZYigcyOSV4fXRcuTHqhg.jpg" alt="Fahima Tabassum" />
+          <h5>Fahima Tabassum, PhD</h5>
+          <p><strong>Position:</strong> Professor</p>
+          <p><strong>Research Interests:</strong> [Not Provided]</p>
+          <div class="contact-info">
+            <p><strong>Email:</strong> [Not Provided]</p>
+            <p><strong>Phone:</strong> [Not Provided]</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 faculty-card">
+  <div class="faculty-card-body">
+    <img src="https://juniv.edu/storage/image/teacher/238_Capture2-d58abb.jpg" alt="Dr. Shamim Al Mamun" />
+    <h5>Dr. Shamim Al Mamun</h5>
+    <p><strong>Position:</strong> Professor</p>
+    <p><strong>Research Interest:</strong> Computer Vision for Health, Machine Learning, Web Engineering...</p>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:shamim@juniv.edu">shamim@juniv.edu</a></p>
+      <p><strong>Phone:</strong> +8801712345678</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 faculty-card">
+  <div class="faculty-card-body">
+    <img src="https://juniv.edu/storage/image/teacher/2j9aXjtbHZv0M8J1tpYpMF42AjQmZs2Vuq2ag8bd.jpg" alt="Dr. Mohammad Shahidul Islam" />
+    <h5>Dr. Mohammad Shahidul Islam</h5>
+    <p><strong>Position:</strong> Professor</p>
+    <p><strong>Research Interest:</strong> Artificial Intelligence, Robotics, Machine Learning, Pattern Recognition...</p>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:shahidul@juniv.edu">shahidul@juniv.edu</a></p>
+      <p><strong>Phone:</strong> +8801712345679</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 faculty-card">
+  <div class="faculty-card-body">
+    <img src="https://juniv.edu/storage/image/teacher/scPJ7bDrysK1mutRND7YEd2fQZqAnEmYeq83gckE.jpg" alt="Dr. Md. Sazzadur Rahman" />
+    <h5>Dr. Md. Sazzadur Rahman</h5>
+    <p><strong>Position:</strong> Professor</p>
+    <p><strong>Research Interest:</strong> Internet of Things, Machine Learning, Material Science in AI...</p>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:sazzadur@juniv.edu">sazzadur@juniv.edu</a></p>
+      <p><strong>Phone:</strong> +8801712345680</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 faculty-card">
+  <div class="faculty-card-body">
+    <img src="https://www.juniv.edu/storage/image/teacher/4Mx6Tcf0DANb1ELse49P5gfVSdhCskONSrICNH3t.jpg" alt="Rashed Mazumder, Ph.D." />
+    <h5>Rashed Mazumder, Ph.D.</h5>
+    <p><strong>Position:</strong> Associate Professor</p>
+    <p><strong>Research Interest:</strong> Information Science (Cryptography and Information Security)...</p>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:rashed@juniv.edu">rashed@juniv.edu</a></p>
+      <p><strong>Phone:</strong> +8801712345681</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 faculty-card">
+  <div class="faculty-card-body">
+    <img src="https://www.juniv.edu/storage/image/teacher/hJHtgstwj5bEfc5TSLJf77T2S13Rwl2iR5PjjGSd.png" alt="Mehrin Anannya" />
+    <h5>Mehrin Anannya</h5>
+    <p><strong>Position:</strong> Assistant Professor</p>
+    <p><strong>Research Interest:</strong> [Add Research Interest]</p>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:mehrin@juniv.edu">mehrin@juniv.edu</a></p>
+      <p><strong>Phone:</strong> +8801712345682</p>
+    </div>
+  </div>
+</div>
+
+<div class="col-md-4 faculty-card">
+  <div class="faculty-card-body">
+    <img src="https://juniv.edu/storage/image/teacher/kGscayXknCgyHEVG7U7Vm7CPcsU7YWGE3Xk4KsOb.jpg" alt="Md. Mahmudur Rahman" />
+    <h5>Md. Mahmudur Rahman</h5>
+    <p><strong>Position:</strong> Assistant Professor</p>
+    <p><strong>Research Interest:</strong> Machine Learning, Medical Image Processing, Data Mining...</p>
+    <div class="contact-info">
+      <p><strong>Email:</strong> <a href="mailto:mahmudur@juniv.edu">mahmudur@juniv.edu</a></p>
+      <p><strong>Phone:</strong> +8801712345683</p>
+    </div>
+  </div>
+</div>
+
+      
+
+    </div>
+  </div>
+
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+  ></script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WWE Official</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    body {
+      background-color: #111;
+      color: #fff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 26px;
+    }
+
+    .navbar-dark .nav-link {
+      color: #ddd;
+      transition: color 0.3s ease;
+    }
+
+    .navbar-dark .nav-link:hover {
+      color: #e60000;
+    }
+
+    .btn-subscribe {
+      background-color: #e60000;
+      color: white;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-subscribe:hover {
+      background-color: #b30000;
+    }
+
+    .video-title {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      color: #fff;
+      border: 1px solid #333;
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      height: 150px;
+      object-fit: cover;
+    }
+
+    footer a:hover {
+      color: #e60000 !important;
+    }
+
+    h2 {
+      color: #e60000;
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">
+      <img src="https://www.wwe.com/a/i/wwe_logo.svg" alt="WWE Logo" height="30" class="d-inline-block align-text-top">
+      WWE
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#wweNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="wweNavbar">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Superstars</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Events</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">News</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
+      </ul>
+      <div class="d-flex">
+        <button class="btn btn-outline-light me-2">Sign In</button>
+        <button class="btn btn-subscribe">Subscribe</button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- FEATURED MATCHES -->
+<div class="container mt-5">
+  <div class="row g-4 text-center">
+    <div class="col-md-4">
+      <img src="https://www.wwe.com/f/styles/gallery_img_l/public/all/2023/04/246_WM39_04022023CA_62205--3e205356a931ce97f6b02a577cdc2e3b.jpg" alt="Roman vs Cody" class="img-fluid rounded shadow-sm" />
+      <div class="video-title">Roman Reigns vs Cody Rhodes</div>
+    </div>
+    <div class="col-md-4">
+      <img src="https://www.wwe.com/f/styles/wwe_large/public/all/2023/04/007_WM39_04022023CA_23377--dd39efaddd0fcc1734fb0f165c00d940.jpg" alt="Brock Lesnar" class="img-fluid rounded shadow-sm" />
+      <div class="video-title">Brock Lesnar Returns</div>
+    </div>
+    <div class="col-md-4">
+      <img src="https://www.wwe.com/f/styles/wwe_large/public/all/2024/01/RAW_11272023RC_63140--938cbd0f2e33a73f726e521767322a1f.JPG" alt="Randy Orton" class="img-fluid rounded shadow-sm" />
+      <div class="video-title">Randy Orton RKOs Everyone</div>
+    </div>
+  </div>
+</div>
+
+<!-- TRENDING NEWS -->
+<div class="container my-5">
+  <h2 class="mb-4">Trending & WWE News</h2>
+  <div class="row">
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <img src="https://www.wwe.com/f/styles/wwe_16_9_l_FC/public/all/2025/02/20250201_RR25_final_split--432eb5e264f32099471340220b895cea.jpg" class="card-img-top" alt="Royal Rumble">
+        <div class="card-body">
+          <h5 class="card-title">Royal Rumble Results</h5>
+          <p class="card-text">Find out who headlined WrestleMania 2025...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <img src="https://www.wwe.com/f/styles/wwe_large/public/all/2025/04/002_SD_04252025EJ_15777--dbec7ea441f3068e6293283a9dbb3493.jpg" class="card-img-top" alt="New Champion">
+        <div class="card-body">
+          <h5 class="card-title">New Champion Crowned</h5>
+          <p class="card-text">A new era begins on SmackDown...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <img src="https://www.wwe.com/f/styles/wwe_large/public/rd-talent/Bio/Undertaker_bio.png" class="card-img-top" alt="Legend Returns">
+        <div class="card-body">
+          <h5 class="card-title">Legend Returns</h5>
+          <p class="card-text">A legend re-enters the WWE ring!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <img src="https://www.wwe.com/f/styles/wwe_show_logo_l/public/all/2024/09/WrestleMania_41_2025_XLI_Logo--9c9d4593993a703097c0f1f9e88fece4.png" class="card-img-top" alt="Next Event">
+        <div class="card-body">
+          <h5 class="card-title">Next Event Revealed</h5>
+          <p class="card-text">WrestleMania 41 officially announced!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="bg-dark text-white pt-4 pb-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h5>About WWE</h5>
+        <p>WWE delivers the best in sports entertainment globally. Watch weekly shows, premium live events, and exclusive behind-the-scenes content.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>Quick Links</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Superstars</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Events</a></li>
+          <li><a href="#" class="text-white text-decoration-none">News</a></li>
+          <li><a href="#" class="text-white text-decoration-none">Shop</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>Subscribe</h5>
+        <form>
+          <div class="mb-2">
+            <input type="email" class="form-control" placeholder="Enter your email" />
+          </div>
+          <button class="btn btn-subscribe w-100" type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <hr class="bg-light" />
+    <div class="text-center">
+      <small>&copy; 2025 WWE Entertainment. All Rights Reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
